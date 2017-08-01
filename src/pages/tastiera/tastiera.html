@@ -5,9 +5,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item padding-top>
+  <h2 text-center padding>Categoria: {{categoria.fields.nome}}</h2>
+  <ion-item>
     <ion-label color="primary" fixed>€</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number" [value]="importo" [(ngModel)]="importo"></ion-input>
   </ion-item>
 
   <p text-center padding-top>

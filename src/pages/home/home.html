@@ -10,7 +10,7 @@
   <ion-grid>
       <ion-row *ngFor="let categoria of categorie">
         <ion-col col-12>
-          <ion-card (click)="open_keyboard()">
+          <ion-card (click)="open_keyboard(categoria)">
             <ion-card-content>
               <ion-card-title>
                 {{categoria.fields.nome}}

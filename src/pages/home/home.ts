@@ -18,23 +18,17 @@ export class HomePage {
   ionViewDidLoad() {
     let aziendaCategorieURL = this.URLVars.aziendaCategorieURL();
 
-/*
-    this.http.get(aziendaCategorieURL).subscribe(
-      (data) => console.log(data),
+    this.http.get(aziendaCategorieURL).map(res => res.json()).subscribe(
+      (data) => {
+        this.categorie = data;
+      },
       (err) => console.log(err)
     );
-*/
-
-    this.http.get(aziendaCategorieURL).map(res => res.json()).subscribe(data => {
-        console.log(data)
-        this.categorie = data;
-    });
-
 
   }
 
-
-  open_keyboard() {
-    this.navCtrl.push(TastieraPage);
+  open_keyboard(categoria) {
+    this.navCtrl.push(TastieraPage, {categoria: categoria});
   }
+
 }
