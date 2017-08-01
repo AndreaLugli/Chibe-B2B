@@ -15,6 +15,10 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public loadingCtrl:LoadingController, private alertCtrl: AlertController, public URLVars:URLVars, public http: Http) {}
 
+  ionViewDidLoad() {
+    this.login()
+  }
+
   login() {
     Sim.getSimInfo().then(
       (info) => this.success_get_info(info),

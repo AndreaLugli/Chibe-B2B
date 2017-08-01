@@ -11,4 +11,9 @@ export class URLVars {
   aziendaLoginURL() {
     return this.getBaseURL() + "/azienda/login/";
   }
+
+  aziendaCategorieURL() {
+    return this.getBaseURL() + "/azienda/categorie/";
+  }
+
 }
