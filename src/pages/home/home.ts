@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TastieraPage } from '../tastiera/tastiera';
-import { Http, URLSearchParams } from '@angular/http';
+import { Http } from '@angular/http';
 import { URLVars } from '../../providers/urls-var';
 import 'rxjs/add/operator/map';
 
