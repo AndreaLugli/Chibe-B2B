@@ -5,6 +5,9 @@ import { Sim } from 'ionic-native';
 import { Http, URLSearchParams } from '@angular/http';
 import { URLVars } from '../../providers/urls-var';
 
+import { Network } from '@ionic-native/network';
+import { BatteryStatus, BatteryStatusResponse } from '@ionic-native/battery-status';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -13,10 +16,27 @@ import { URLVars } from '../../providers/urls-var';
 export class LoginPage {
   loading: Loading;
 
-  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController, private alertCtrl: AlertController, public URLVars:URLVars, public http: Http) {}
+  constructor(private batteryStatus: BatteryStatus, private network: Network, public navCtrl: NavController, public loadingCtrl:LoadingController, private alertCtrl: AlertController, public URLVars:URLVars, public http: Http) {}
+
+  ionViewDidEnter() {
+    this.network.onDisconnect().subscribe(data => {
+      alert("Attenzione! Sei offline");
+    }, error => console.error(error));
+
+    this.batteryStatus.onChange().subscribe((status: BatteryStatusResponse) => {
+      console.log("Batteria");
+      let level = status.level;
+      let isPlugged = status.isPlugged;
+
+      if(!isPlugged && level < 20) {
+        alert("Attenzione! Batteria scarica. Collegare ad una fonte di corrente prima di continuare");
+      }
+
+    }, error => console.error(error));
+  }
 
   ionViewDidLoad() {
-    this.login()
+    this.login();
   }
 
   login() {
@@ -33,8 +53,10 @@ export class LoginPage {
 
   error_get_info(err) {
     console.log('Unable to get sim info: ', err);
+    //DEBUG
     let deviceId = '868051020276493';
     this.login_function(deviceId);
+    //End debug
   }
 
   login_function(deviceId) {

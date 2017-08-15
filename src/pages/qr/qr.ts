@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { ConfermaPage } from '../conferma/conferma';
+import { Http, URLSearchParams } from '@angular/http';
+import { URLVars } from '../../providers/urls-var';
 
 @Component({
   selector: 'page-qr',
@@ -8,11 +10,12 @@ import { ConfermaPage } from '../conferma/conferma';
 })
 
 export class QrPage {
+  loading: Loading;
   categoria: any;
   importo: any;
   code: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl:LoadingController, public URLVars:URLVars, public http: Http) {
     this.categoria = navParams.get('categoria');
     this.importo = navParams.get('importo');
   }
@@ -41,21 +44,45 @@ export class QrPage {
       this.invia_pagamento();
     }
     else {
-      let alert_obj = this.alertCtrl.create({
-        title: 'Attenzione',
-        subTitle: 'Inserisci un codice personale',
-        buttons: ['OK']
-      });
-      alert_obj.present();
+      this.showError("Inserisci un codice personale");
     }
   }
 
   invia_pagamento() {
-    alert(this.categoria);
-    alert(this.importo);
-    alert(this.code);
-    //this.navCtrl.setRoot(ConfermaPage);
+    let categoria_id = this.categoria.pk;
+
+    this.loading = this.loadingCtrl.create({
+     content: "Registrazione pagamento..",
+     dismissOnPageChange: true
+   });
+
+   let registraPagagamentoURL = this.URLVars.registraPagagamentoURL();
+
+   let headers = new Headers();
+   headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+   let body = new URLSearchParams();
+   body.append('categoria_id', categoria_id);
+   body.append('importo', this.importo);
+   body.append('code', this.code);
+
+   this.http.post(registraPagagamentoURL, body).subscribe(
+     (data) => this.navCtrl.setRoot(ConfermaPage),
+     (err) => this.showError(err._body)
+   );
   }
 
+  showError(text) {
+    if(this.loading) {
+      this.loading.dismiss();
+    }
+
+    let alert_obj = this.alertCtrl.create({
+      title: 'Errore',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert_obj.present(prompt);
+  }
 
 }
