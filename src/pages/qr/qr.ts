@@ -21,7 +21,6 @@ export class QrPage {
   }
 
   scan() {
-    /*
     cordova.plugins.barcodeScanner.scan((result) => {
       let cancelled = result.cancelled;
       if(!cancelled) {
@@ -36,7 +35,6 @@ export class QrPage {
       });
       alert.present();
     });
-    */
   }
 
   conferma_codice() {
