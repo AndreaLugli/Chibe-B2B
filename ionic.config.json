@@ -1,5 +1,8 @@
 {
   "name": "b2b",
   "app_id": "e488cf8b",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

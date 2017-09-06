@@ -53,9 +53,10 @@ export class LoginPage {
 
   error_get_info(err) {
     console.log('Unable to get sim info: ', err);
+    alert("Unable to get sim info");
     //DEBUG
-    let deviceId = '868051020276493';
-    this.login_function(deviceId);
+    //let deviceId = '868051020276493';
+    //this.login_function(deviceId);
     //End debug
   }
 

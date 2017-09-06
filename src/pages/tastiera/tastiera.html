@@ -5,13 +5,15 @@
 </ion-header>
 
 <ion-content padding>
+  <!--
   <h2 text-center padding>Categoria: {{categoria.fields.nome}}</h2>
-  <ion-item>
-    <ion-label color="primary" fixed>€</ion-label>
+  -->
+  <ion-item class="custom-bgcolor custom-form">
+    <ion-label class="valuta" fixed>€</ion-label>
     <ion-input type="number" [value]="importo" [(ngModel)]="importo"></ion-input>
   </ion-item>
 
   <p text-center padding-top>
-    <button ion-button round (click)="go_qr()">Conferma</button>
+    <button class="confirm-btn" ion-button round (click)="go_qr()">Conferma</button>
   </p>
 </ion-content>

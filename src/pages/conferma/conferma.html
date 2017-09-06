@@ -6,9 +6,13 @@
 
 
 <ion-content padding text-center>
-  <ion-icon name="checkmark" class="larger-icon"></ion-icon>
-  <h1>Pagamento registrato con successo</h1>
+  <div margin-top class="bg-success">
+      <div padding>
+        <h1 padding>PAGAMENTO REGISTRATO CON SUCCESSO!</h1>
+      </div>
+  </div>
+
   <p text-center padding-top>
-    <button ion-button round (click)="back_home()">Torna alla home</button>
+    <button class="confirm-btn" ion-button round (click)="back_home()">HOME</button>
   </p>
 </ion-content>
