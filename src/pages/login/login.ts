@@ -24,7 +24,6 @@ export class LoginPage {
     }, error => console.error(error));
 
     this.batteryStatus.onChange().subscribe((status: BatteryStatusResponse) => {
-      console.log("Batteria");
       let level = status.level;
       let isPlugged = status.isPlugged;
 
@@ -40,9 +39,15 @@ export class LoginPage {
   }
 
   login() {
-    Sim.getSimInfo().then(
-      (info) => this.success_get_info(info),
-      (err) => this.error_get_info(err)
+
+    Sim.requestReadPermission().then(
+      () => {
+        Sim.getSimInfo().then(
+          (info) => this.success_get_info(info),
+          (err) => this.error_get_info(err)
+        );
+      },
+      () => console.log('Devi accettare i permessi per poter usare Chibe!')
     );
   }
 
@@ -61,7 +66,8 @@ export class LoginPage {
   }
 
   login_function(deviceId) {
-     this.loading = this.loadingCtrl.create({
+
+    this.loading = this.loadingCtrl.create({
       content: "Accesso in corso...",
       dismissOnPageChange: true
     });
