@@ -21,6 +21,10 @@ export class URLVars {
     return this.getBaseURL() + "/azienda/pagamento/";
   }
 
-  
+  testURL() {
+    return this.getBaseURL() + "/azienda/test/";
+  }
+
+
 
 }

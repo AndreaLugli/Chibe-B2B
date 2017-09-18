@@ -11,6 +11,8 @@ import { HomePage } from '../pages/home/home';
 import { TastieraPage } from '../pages/tastiera/tastiera';
 import { QrPage } from '../pages/qr/qr';
 import { ConfermaPage } from '../pages/conferma/conferma';
+import { ErrorePage } from '../pages/errore/errore';
+
 import { URLVars } from '../providers/urls-var';
 
 import { Network } from '@ionic-native/network';
@@ -23,7 +25,8 @@ import { BatteryStatus } from '@ionic-native/battery-status';
     HomePage,
     TastieraPage,
     QrPage,
-    ConfermaPage
+    ConfermaPage,
+    ErrorePage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { BatteryStatus } from '@ionic-native/battery-status';
     HomePage,
     TastieraPage,
     QrPage,
-    ConfermaPage
+    ConfermaPage,
+    ErrorePage
   ],
   providers: [
     StatusBar,

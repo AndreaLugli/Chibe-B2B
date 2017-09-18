@@ -39,15 +39,9 @@ export class LoginPage {
   }
 
   login() {
-
-    Sim.requestReadPermission().then(
-      () => {
-        Sim.getSimInfo().then(
-          (info) => this.success_get_info(info),
-          (err) => this.error_get_info(err)
-        );
-      },
-      () => console.log('Devi accettare i permessi per poter usare Chibe!')
+    Sim.getSimInfo().then(
+      (info) => this.success_get_info(info),
+      (err) => this.error_get_info(err)
     );
   }
 
@@ -66,7 +60,6 @@ export class LoginPage {
   }
 
   login_function(deviceId) {
-
     this.loading = this.loadingCtrl.create({
       content: "Accesso in corso...",
       dismissOnPageChange: true
@@ -76,14 +69,13 @@ export class LoginPage {
 
     let aziendaLoginURL = this.URLVars.aziendaLoginURL();
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
     let body = new URLSearchParams();
     body.append('imei', deviceId);
 
     this.http.post(aziendaLoginURL, body).subscribe(
-      (data) => this.navCtrl.setRoot(HomePage),
+      (data) => {
+        this.navCtrl.setRoot(HomePage);
+      },
       (err) => this.showError("Non autorizzato")
     );
 

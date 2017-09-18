@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { ConfermaPage } from '../conferma/conferma';
+import { ErrorePage } from '../errore/errore';
+
 import { Http, URLSearchParams } from '@angular/http';
 import { URLVars } from '../../providers/urls-var';
 
@@ -56,9 +58,6 @@ export class QrPage {
 
    let registraPagagamentoURL = this.URLVars.registraPagagamentoURL();
 
-   let headers = new Headers();
-   headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
    let body = new URLSearchParams();
    body.append('categoria_id', categoria_id);
    body.append('importo', this.importo);
@@ -66,7 +65,10 @@ export class QrPage {
 
    this.http.post(registraPagagamentoURL, body).subscribe(
      (data) => this.navCtrl.setRoot(ConfermaPage),
-     (err) => this.showError(err._body)
+     (err) => {
+        //this.showError(err._body)
+        this.navCtrl.setRoot(ErrorePage);
+      }
    );
   }
 

@@ -1,0 +1,21 @@
+page-errore {
+
+  h1 {
+    font-weight: bold;
+    color: #21194F;
+  }
+
+  .bg-success {
+    background: url("../assets/imgs/errore-bg.png");
+    background-size: 100% 100%;
+  }
+
+  .error-btn {
+    background-color: #E90031;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 2px 2px 0px 0px rgba(233,0,49,1);
+  }
+
+}
