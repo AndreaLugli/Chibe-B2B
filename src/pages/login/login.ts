@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { Sim } from 'ionic-native';
 import { Http, URLSearchParams } from '@angular/http';
 import { URLVars } from '../../providers/urls-var';
+import 'rxjs/add/operator/map';
 
 import { Network } from '@ionic-native/network';
 import { BatteryStatus, BatteryStatusResponse } from '@ionic-native/battery-status';
@@ -39,6 +40,12 @@ export class LoginPage {
   }
 
   login() {
+
+    Sim.requestReadPermission().then(
+      () => console.log('Permission granted'),
+      () => console.log('Permission denied')
+    );
+
     Sim.getSimInfo().then(
       (info) => this.success_get_info(info),
       (err) => this.error_get_info(err)
@@ -76,7 +83,10 @@ export class LoginPage {
       (data) => {
         this.navCtrl.setRoot(HomePage);
       },
-      (err) => this.showError("Non autorizzato")
+      (err) => {
+        console.log(err);
+        this.showError(err.text());
+      }
     );
 
   }
