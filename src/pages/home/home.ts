@@ -32,7 +32,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-      this.initializeBackButtonCustomHandler();
+    this.initializeBackButtonCustomHandler();
   }
 
   public initializeBackButtonCustomHandler(): void {
@@ -42,7 +42,13 @@ export class HomePage {
   }
 
   private customHandleBackButton(): void {
-      console.log("Oh no");
+      let view_name = this.navCtrl.getActive().name;
+      if(view_name == "HomePage") {
+        console.log("Nooo");
+      }
+      else {
+        this.navCtrl.pop();
+      }
   }
 
 }
