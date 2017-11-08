@@ -23,7 +23,7 @@ export class QrPage {
   }
 
   scan() {
-    /*
+
     cordova.plugins.barcodeScanner.scan((result) => {
       let cancelled = result.cancelled;
       if(!cancelled) {
@@ -41,7 +41,7 @@ export class QrPage {
     {
       prompt: "Posiziona un codice QR code dentro al mirino"
     });
-    */
+    
   }
 
   conferma_codice() {

@@ -21,7 +21,15 @@ export class LoginPage {
 
   ionViewDidEnter() {
     this.network.onDisconnect().subscribe(data => {
-      alert("Attenzione! Sei offline");
+
+      setTimeout(function () {
+        if(navigator.onLine) {
+          console.log("Siamo online")
+        }
+        else {
+          alert("Attenzione! Sei offline");
+        }
+      }, 5000);
     }, error => console.error(error));
 
     this.batteryStatus.onChange().subscribe((status: BatteryStatusResponse) => {
@@ -40,6 +48,8 @@ export class LoginPage {
   }
 
   login() {
+
+    /*
     Sim.requestReadPermission().then(
       () => {
         Sim.getSimInfo().then(
@@ -50,13 +60,12 @@ export class LoginPage {
       () => console.log('Permission denied')
     );
 
+    */
 
-    /*
     Sim.getSimInfo().then(
       (info) => this.success_get_info(info),
       (err) => this.error_get_info(err)
     );
-    */
 
   }
 
