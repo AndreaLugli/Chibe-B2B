@@ -49,19 +49,6 @@ export class LoginPage {
 
   login() {
 
-    /*
-    Sim.requestReadPermission().then(
-      () => {
-        Sim.getSimInfo().then(
-          (info) => this.success_get_info(info),
-          (err) => this.error_get_info(err)
-        );
-      },
-      () => console.log('Permission denied')
-    );
-
-    */
-
     Sim.getSimInfo().then(
       (info) => this.success_get_info(info),
       (err) => this.error_get_info(err)

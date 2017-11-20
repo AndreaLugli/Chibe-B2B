@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content padding text-center>
+
+  <button *ngIf="fornitore" ion-button block class="confirm-btn" (click)="riscatta_premio()">RISCATTA PREMIO</button>
+
   <ion-grid>
       <ion-row *ngFor="let categoria of categorie">
         <ion-col col-12>

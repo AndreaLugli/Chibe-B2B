@@ -25,6 +25,12 @@ export class URLVars {
     return this.getBaseURL() + "/azienda/test/";
   }
 
+  riscattaPremioAzienda() {
+    return this.getBaseURL() + "/azienda/premio/";
+  }
 
+  sonoFornitore() {
+    return this.getBaseURL() + "/azienda/fornitore/";
+  }
 
 }

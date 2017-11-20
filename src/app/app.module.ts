@@ -12,6 +12,8 @@ import { TastieraPage } from '../pages/tastiera/tastiera';
 import { QrPage } from '../pages/qr/qr';
 import { ConfermaPage } from '../pages/conferma/conferma';
 import { ErrorePage } from '../pages/errore/errore';
+import { RiscattaPage } from '../pages/riscatta/riscatta';
+import { PremioPage } from '../pages/premio/premio';
 
 import { URLVars } from '../providers/urls-var';
 
@@ -26,7 +28,9 @@ import { BatteryStatus } from '@ionic-native/battery-status';
     TastieraPage,
     QrPage,
     ConfermaPage,
-    ErrorePage
+    ErrorePage,
+    RiscattaPage,
+    PremioPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { BatteryStatus } from '@ionic-native/battery-status';
     TastieraPage,
     QrPage,
     ConfermaPage,
-    ErrorePage
+    ErrorePage,
+    RiscattaPage,
+    PremioPage
   ],
   providers: [
     {provide: LOCALE_ID, useValue: "it-IT"},

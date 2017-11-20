@@ -5,6 +5,8 @@ import { Http } from '@angular/http';
 import { URLVars } from '../../providers/urls-var';
 import 'rxjs/add/operator/map';
 
+import { RiscattaPage } from '../riscatta/riscatta';
+
 
 @Component({
   selector: 'page-home',
@@ -13,6 +15,7 @@ import 'rxjs/add/operator/map';
 
 export class HomePage {
   categorie: any;
+  fornitore: any;
 
   constructor(public navCtrl: NavController, public URLVars:URLVars, public http: Http, public platform: Platform) {}
 
@@ -25,6 +28,18 @@ export class HomePage {
       },
       (err) => console.log(err)
     );
+
+    let sonoFornitore = this.URLVars.sonoFornitore();
+
+    this.http.get(sonoFornitore).subscribe(
+      (data) => {
+        this.fornitore = true;
+      },
+      (err) => {
+        this.fornitore = false;
+      }
+    );
+
   }
 
   open_keyboard(categoria) {
@@ -49,6 +64,10 @@ export class HomePage {
       else {
         this.navCtrl.pop();
       }
+  }
+
+  public riscatta_premio() {
+    this.navCtrl.push(RiscattaPage);
   }
 
 }

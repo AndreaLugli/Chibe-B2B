@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>RISCATTA PREMIO</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+  <h5 margin-top>Inquadra il QR Code del premio</h5>
+  <img src="assets/imgs/qrpic.png" alt="" height="100" margin-top (click)="scan()">
+  <h5>o inserisci manualmente il codice</h5>
+  <ion-item padding-top class="custom-bgcolor custom-form">
+    <ion-input type="number" placeholder="Codice premio" [value]="code" [(ngModel)]="code"></ion-input>
+  </ion-item>
+  <p text-center>
+    <button class="confirm-btn" ion-button round (click)="conferma_codice()">Conferma</button>
+  </p>
+</ion-content>
