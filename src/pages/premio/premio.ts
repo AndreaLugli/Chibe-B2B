@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-premio',
@@ -10,11 +11,10 @@ export class PremioPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
       this.desiderio = navParams.get('premio');
-      console.log(this.desiderio)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PremioPage');
+  back_home() {
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

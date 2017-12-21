@@ -4,6 +4,15 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding text-center>
-  <p>{{desiderio.descrizione_lunga}}</p>
+  <div margin-top class="bg-success">
+      <div padding>
+        <h1 padding>Ottimo! Il chiber è autorizzato a ritirare il desiderio: {{desiderio.nome}}</h1>
+      </div>
+  </div>
+
+  <p text-center padding-top>
+    <button class="confirm-btn" ion-button round (click)="back_home()">HOME</button>
+  </p>
 </ion-content>
