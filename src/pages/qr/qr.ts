@@ -52,27 +52,33 @@ export class QrPage {
   }
 
   invia_pagamento() {
+    this.loading = this.loadingCtrl.create({
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+
+
     let categoria_id = this.categoria.pk;
 
     this.loading = this.loadingCtrl.create({
-     content: "Registrazione pagamento..",
-     dismissOnPageChange: true
-   });
+       content: "Registrazione pagamento..",
+       dismissOnPageChange: true
+     });
 
-   let registraPagagamentoURL = this.URLVars.registraPagagamentoURL();
+     let registraPagagamentoURL = this.URLVars.registraPagagamentoURL();
 
-   let body = new URLSearchParams();
-   body.append('categoria_id', categoria_id);
-   body.append('importo', this.importo);
-   body.append('code', this.code);
+     let body = new URLSearchParams();
+     body.append('categoria_id', categoria_id);
+     body.append('importo', this.importo);
+     body.append('code', this.code);
 
-   this.http.post(registraPagagamentoURL, body).subscribe(
-     (data) => this.navCtrl.setRoot(ConfermaPage),
-     (err) => {
-        //this.showError(err._body)
-        this.navCtrl.setRoot(ErrorePage);
-      }
-   );
+     this.http.post(registraPagagamentoURL, body).subscribe(
+       (data) => this.navCtrl.setRoot(ConfermaPage),
+       (err) => {
+          this.navCtrl.setRoot(ErrorePage);
+        }
+     );
+
   }
 
   showError(text) {

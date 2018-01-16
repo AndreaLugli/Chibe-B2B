@@ -63,9 +63,11 @@ export class RiscattaPage {
   }
 
   invia_codice_premio() {
+
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true
     });
+    this.loading.present();
 
     let riscattaPremioAzienda = this.URLVars.riscattaPremioAzienda();
     let body = new URLSearchParams();
